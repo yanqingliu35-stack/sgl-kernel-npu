@@ -566,7 +566,7 @@ static ge::graphStatus CamMoeCombineNormalA3TilingFuncImpl(gert::TilingContext *
         OP_LOGE(nodeName,
                 "HCCL_BUFFSIZE is too SMALL, realBs = %lu, h = %lu, epWorldSize = %lu, localMoeExpertNum = %u,"
                 " tokenNeedSizeCombine = %lu, k = %lu, NEEDED_HCCL_BUFFSIZE("
-                "((realBs * k * tokenNeedSizeCombine * 2)) + 8MB + 404MB) * 2) = %luMB, "
+                "(realBs * k * tokenNeedSizeCombine + 8MB + 74MB) * 2) = %luMB, "
                 "HCCL_BUFFSIZE=%luMB.",
                 realBs, h, epWorldSize, localMoeExpertNum, tokenNeedSizeCombine, k, actualSize / MB_SIZE + 1UL,
                 maxWindowSize / MB_SIZE),
