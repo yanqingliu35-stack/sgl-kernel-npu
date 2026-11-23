@@ -9,7 +9,10 @@
 namespace Moe {
 constexpr int CAM_MAX_RANK_SIZE = 384;  // Maximum number of NPU cards supported by the communication library
 
-constexpr uint64_t NOTIFY_DISPATCH_BUFF_OFFSET = 202UL * 1024UL * 1024UL;
+// Normal Notify uses 2 MiB of control space plus bounded metadata/staging.
+// Reserve another 72 MiB; retain the separate A2/RDMA IPC limits below.
+// Keep this in sync with NOTIFY_DISPATCH_WIN_OFFSET in op_host/tiling_args.h.
+constexpr uint64_t NOTIFY_DISPATCH_BUFF_OFFSET = 74UL * 1024UL * 1024UL;
 constexpr int64_t IPC_BUFF_MAX_SIZE = 200 * 1024 * 1024;
 constexpr int64_t IPC_DATA_OFFSET = 2 * 1024 * 1024;  // First 2MB as flag, then 100MB as data storage
 constexpr int64_t PING_PONG_SIZE = 2;
